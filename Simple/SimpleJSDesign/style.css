@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: "lato";
+    src: url('./fonts/Lato-Bold.ttf') format('truetype');
+}
+
+body {
+    background-color: rgb(235, 235, 235);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-areas: 
+    "nav nav"
+    "main aside"
+    "footer footer";
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 100px auto 70px;
+}
+/* -------------------------------------------------------- */
+nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 40px;
+    /* background-color: chartreuse; */
+}
+nav ul {
+    display: flex;
+    width: 40%;
+    list-style: none;
+    justify-content: space-evenly;
+}
+nav ul li{
+    opacity: .5;
+    transition: .3s;
+}
+nav ul li:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+nav .judul {
+    position: absolute;
+    right: 267px;
+    opacity: 0;
+    transition: 1s;
+    width: 200px;
+    text-align: center;
+}
+.judul h1 {
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.judul .garis {
+    width: 400px;
+    background-color: black;
+    border: 1px solid black;
+}
+.judul .listTekan {
+    position: relative;
+    top: 30px;
+    background-color: none;
+    width: 400px;
+}
+.judul .listTekan .tekan {
+    background-color : rgb(180, 180, 180); 
+    border-radius: 15px;
+    height: 30px;
+    width: 30px;
+    transition: .3s;
+}
+.judul .listTekan .tekan:nth-child(1){
+    background-color: black;
+}
+.judul .listTekan .tekan:hover {
+    cursor: pointer;
+}
+/* ----------------------------------------------------- */
+main {
+    grid-area: main;
+    padding-top: 10%;
+    /* background-color: chocolate; */
+    padding-left: 150px;
+}
+main h1 {
+    font-size: 60px;
+    font-family: lato;
+}
+main button {
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    transition: transform 1s, background 0.1s, color 0.1s;
+    background-color: whitesmoke;
+}
+main button:hover {
+    cursor: pointer;
+    /* box-shadow: 2px 2px 5px 2px grey; */
+    background: grey;
+    color: whitesmoke;
+}
+main .utama {
+    opacity: 1;
+    transition: 1s;
+}
+.hilang {
+    transform: translateX(-1300px);
+    opacity: 0;
+}
+.pindah {
+    transform: scale(.7) translateY(250px) translateX(200px);
+}
+/* -------------------------------------------------------- */
+aside {
+    grid-area: aside;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+}
+aside div.gambar {
+    width: 500px;
+    height: 500px;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    left: -40px;
+    overflow: hidden;
+    transition: 1s;
+}
+aside div.gambar .insideGambar{
+    width: 490px;
+    height: 490px;
+    /* background-color: black; */
+    border: none;
+    overflow: hidden;
+    border-radius: 50%;
+}
+aside div.gambar img {
+    position: relative;
+    top: 90px;
+    left: 50px;
+}
+.side {
+    transform: scale(.2) translateX(-4600px) translateY(-1300px);
+    /* translate Y =700px */
+}
+/* -------------------------------------------------------- */
+footer {
+    grid-area: footer;
+    display: flex;
+    /* background-color: darkgreen; */
+}
+footer .logo{
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 90px;
+}
+footer .logo a {
+    opacity: .5;
+    transition: .5s;
+}
+footer .logo a:hover{
+    opacity: 1;
+    /* box-shadow: 0 0 0 10px black; */
+}
+/* -------------------------------------------------------- */
+main .layerMain {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 1);
+    top: 130px;
+    border-radius: 10px;
+    transform: translateX(1000px);
+    opacity: 0;
+    transition: 1s;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .3);
+}
+main .layerMain img {
+    height: 400px;
+    width: auto;
+}
+main .layerMain.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+aside .layerAside {
+    position: absolute;
+    left: 50px;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    transform: translateX(1000px);
+    opacity: 0;
+    transition: 1s;
+    /* box-shadow: 0 10px 10px rgba(0, 0, 0, .3); */
+    overflow: hidden;
+    border-radius: 10px;
+}
+.up1 {
+    transform: translateY(-380px);
+}
+.up2 {
+    transform: translateY(-760px);
+}
+aside .layerAside.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+aside .layerAside .skill {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(200, 200, 200, .3);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 10px;
+    margin-top: 35px;
+    transition: .2s;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, .8),
+                inset 0 0 10px 2px rgba(255, 255, 255, .8);
+}
+aside .layerAside img {
+    transition: .5s;
+}
+aside .layerAside .skill:hover img {
+    transform: translateY(-30px) scale(.7);
+    cursor: pointer;
+}
+aside .layerAside .skill:hover body {
+    background-color: black;
+}
+aside .layerAside .skill .content {
+    position: absolute;
+    top: 100px;
+    transform: translateY(50px);
+    transition: .5s;
+    opacity: 0;
+}
+aside .layerAside .skill:hover .content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade {
+    animation: fade 2s forwards;
+}
+.fadeIn {
+    animation: fade 2s;
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide {
+    animation : slide .3s forwards;
+}
